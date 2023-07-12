@@ -166,7 +166,7 @@
         <div class="user-dropdown">
             <button onclick="toggleDropdown()">{{ auth()->user()->name }}</button>
             <div class="user-dropdown-content" id="dropdown-content">
-                <a href="#">Profil</a>
+                <a href="/profile">Profil</a>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             </div>
         </div>
@@ -182,7 +182,7 @@
                 <textarea id="token-textarea" readonly>{{ session('token') }}</textarea>
                 <button class="copy-button" onclick="copyToken()">Copy</button>
             </div>
-            <span class="copy-success" id="copy-success"></span```html
+            <span class="copy-success" id="copy-success"></span>
         </div>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
