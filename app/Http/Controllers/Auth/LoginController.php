@@ -44,7 +44,9 @@ class LoginController extends Controller
         if ($request->user()) {
             $request->user()->tokens()->delete();
         }
-    
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         $request->session()->forget('token');
     
         return redirect('/login');
