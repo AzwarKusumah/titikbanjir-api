@@ -1,122 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Register</title>
+    <title>Halaman Profil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #FF8C00, #FF4500);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
         }
 
-        .card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 24px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .card h2 {
-            margin-top: 0;
-            color: #333333;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-            width: 100%;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #666666;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 4px;
-            background-color: #f4f4f4;
+        .profile-card {
+            background-color: #fff;
+            border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
+            padding: 30px;
+            max-width: 500px;
+            margin: 50px auto;
         }
 
-        .form-group input:focus {
-            outline: none;
-            background-color: #e0e0e0;
+        .profile-card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
-        .button {
-            background: linear-gradient(135deg, #ec008c, #fc6767);
-            color: #ffffff;
-            font-size: 16px;
+        .profile-card form {
+            margin-bottom: 20px;
+        }
+
+        .profile-card label {
+            display: block;
             font-weight: bold;
-            padding: 12px 24px;
-            border: none;
+            margin-bottom: 10px;
+        }
+
+        .profile-card input[type="text"],
+        .profile-card input[type="email"],
+        .profile-card input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .profile-card button {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff8c00, #ff4500);
+            color: #fff;
+            border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
         }
 
-        .button:hover {
-            background: linear-gradient(135deg, #fc6767, #ec008c);
+        .profile-card button:hover {
+            background: linear-gradient(45deg, #ff4500, #ff8c00);
         }
 
-        .button:active {
-            transform: scale(0.98);
+        .profile-card hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
         }
 
-        .button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
+        .profile-card .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
         }
 
-        .button:disabled:hover {
-            background-color: #cccccc;
+        .profile-card .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <h2>Halaman Register</h2>
-        <form action="{{ route('register') }}" method="POST">
+    <div class="profile-card">
+        <h2>Profil Pengguna</h2>
+        <form method="POST" action="{{ route('updateProfile') }}">
             @csrf
-
-            <div class="form-group">
+            <p>
                 <label for="name">Nama:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="form-group">
+                <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+            </p>
+            <p>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <button type="submit" class="button">Register</button>
+                <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+            </p>
+            <p>
+                <button type="submit">Simpan</button>
+            </p>
         </form>
-        <div>
-            <p>Sudah punya akun? <a href="{{ route('login') }}">Login disini</a></p>
-        </div>
+        <hr>
+        <h2>Ganti Password</h2>
+        <form method="POST" action="{{ route('updatePassword') }}">
+            @csrf
+            <p>
+                <label for="current_password">Password Saat Ini:</label>
+                <input type="password" id="current_password" name="current_password" required>
+            </p>
+            <p>
+                <label for="new_password">Password Bassru:</label>
+                <input type="password" id="new_password" name="new_password" required>
+            </p>
+            <p>
+                <label for="new_password_confirmation">Konfirmasi Password Baru:</label>
+                <input type="password" id="new_password_confirmation" name="new_password_confirmation" required>
+            </p>
+            <p>
+                <button type="submit">Simpan</button>
+            </p>
+        </form>
+        @if (session('success'))
+            <p class="success-message">{{ session('success') }}</p>
+        @endif
+        @if (session('error'))
+            <p class="error-message">{{ session('error') }}</p>
+        @endif
     </div>
 </body>
 </html>

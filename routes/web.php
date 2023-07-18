@@ -15,5 +15,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [LoginController::class, 'home'])->name('home')->middleware('auth');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
-});
+    Route::get('/setting', [ProfileController::class, 'showSetting'])->name('setting');
+    Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+    Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
 
+});

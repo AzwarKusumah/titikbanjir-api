@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Halaman Profil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -112,97 +111,77 @@
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 60px;
+            padding: 30px;
             max-width: 500px;
-            height: auto;
-            transition: all 0.3s ease;
-            margin-left: 50px;
-            margin-top: 50px;
+            margin: 50px auto;
         }
 
-        .profile-card.hide {
-            margin-left: 0;
+        .profile-card h2 {
+            margin-bottom: 20px;
         }
 
-        .content .token-container {
-            margin-top: 20px;
+        .profile-card p {
+            margin-bottom: 10px;
         }
 
-        .content .token-container .copy-container {
-            display: flex;
-            align-items: center;
+        .profile-card hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #ccc;
         }
 
-        .content .token-container textarea {
-            width: 400px;
-            height: 30px;
+        .profile-card form {
+            margin-bottom: 20px;
+        }
+
+        .profile-card label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .profile-card input[type="text"],
+        .profile-card input[type="email"],
+        .profile-card input[type="password"] {
+            width: 100%;
             padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
-            resize: none;
-            margin-right: 10px;
         }
 
-        .content .token-container button {
-            background: linear-gradient(45deg, #ff8c00, #ff4500);
+        .profile-card .warning {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .profile-card button {
+            background-color: #ff8800;
             color: #fff;
             border: none;
-            cursor: pointer;
             padding: 10px 20px;
-            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
             border-radius: 4px;
-            font-size: 16px;
         }
 
-        .content .token-container button:hover {
-            background: linear-gradient(45deg, #ff4500, #ff8c00);
+        .profile-card button:hover {
+            background-color: #ff5500;
         }
 
-        .content button,
-        .content a {
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #ff8c00, #ff4500);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .content button:hover,
-        .content a:hover {
-            background: linear-gradient(45deg, #ff4500, #ff8c00);
-        }
-
-        .token-container {
+        .change-password-form {
             display: none;
             margin-top: 20px;
         }
 
-        .copy-success {
-            margin-top: 10px;
-            color: green;
-            font-size: 14px;
+        .change-password-form.show {
+            display: block;
         }
 
-        /* Responsif untuk mode mobile */
-        @media (max-width: 600px) {
-            .content .token-container textarea {
-                width: 100%;
-                height: 60px;
-            }
-
-            .content h2 {
-                font-size: 20px;
-            }
-
-            .content button,
-            .content a {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
+        .change-password-form h3 {
+            margin-bottom: 10px;
         }
     </style>
     <script>
@@ -214,29 +193,25 @@
             content.classList.toggle('hide');
             profileCard.classList.toggle('hide');
         }
-        function showToken() {
-                var tokenContainer = document.querySelector('.token-container');
-                tokenContainer.style.display = 'block';
-            }
 
-            function hideToken() {
-                var tokenContainer = document.querySelector('.token-container');
-                tokenContainer.style.display = 'none';
-            }
+        function toggleChangePassword() {
+            const changePasswordForm = document.querySelector('.change-password-form');
+            changePasswordForm.classList.toggle('show');
+        }
 
-            function copyToken() {
-                var tokenTextarea = document.getElementById('token-textarea');
-                tokenTextarea.select();
-                document.execCommand("copy");
-                var copySuccess = document.getElementById('copy-success');
-                copySuccess.textContent = 'Token telah disalin';
-                setTimeout(function() {
-                    copySuccess.textContent = '';
-                }, 2000);
+        function validatePassword() {
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('new_password_confirmation').value;
+            const warning = document.getElementById('password-warning');
+            
+            if (newPassword !== confirmPassword) {
+                warning.textContent = 'Password tidak sesuai.';
+            } else {
+                warning.textContent = '';
             }
+        }
     </script>
 </head>
-
 <body>
     <div class="sidebar">
         <div class="brand">
@@ -245,9 +220,10 @@
         </div>
         <ul>
             <li><a href="/home"><i class="fas fa-home"></i><span>Home</span></a></li>
-            <li><a href="/profile"><i class="fas fa-user"></i><span>Profile</span></a></li>
-            <li><a href="/setting"><i class="fas fa-cog"></i><span>Setting</span></a></li>
-            <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <li><a href="#"><i class="fas fa-user"></i><span>Profile</span></a></li>
+            <li><a href="#"><i class="fas fa-cog"></i><span>Setting</span></a></li>
+            <li>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i><span>Logout</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -262,23 +238,41 @@
     <div class="content">
         <div class="profile-card">
             <h2>Profil Pengguna</h2>
-            <p>Nama: {{ $user->name }}</p>
-            <p>Email: {{ $user->email }}</p>
-            <hr/>
-            <h2>Token Pengguna</h2>
-            <div class="token-buttons">
-            <button onclick="showToken()">Tampilkan Token</button>
-            <button onclick="hideToken()">Sembunyikan Token</button>
-        </div>
-        <div class="token-container">
-            <div class="copy-container">
-                <textarea id="token-textarea" readonly>{{ session('token') }}</textarea>
-                <button class="copy-button" onclick="copyToken()">Copy</button>
-            </div>
-            <span class="copy-success" id="copy-success"></span>
-        </div>
+            <form method="POST" action="{{ route('updateProfile') }}">
+                @csrf
+                <p>
+                    <label for="name">Nama:</label>
+                    <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ $user->email }}" required>
+                </p>
+                <p>
+                    <button type="button" onclick="toggleChangePassword()">Ubah Password</button>
+                </p>
+                <div class="change-password-form">
+                    <hr>
+                    <h3>Ganti Password</h3>
+                    <p>
+                        <label for="current_password">Password Saat Ini:</label>
+                        <input type="password" id="current_password" name="current_password" required>
+                    </p>
+                    <p>
+                        <label for="new_password">Password Baru:</label>
+                        <input type="password" id="new_password" name="new_password" onkeyup="validatePassword()" required>
+                    </p>
+                    <p>
+                        <label for="new_password_confirmation">Konfirmasi Password Baru:</label>
+                        <input type="password" id="new_password_confirmation" name="new_password_confirmation" onkeyup="validatePassword()" required>
+                        <span class="warning" id="password-warning"></span>
+                    </p>
+                </div>
+                <p>
+                    <button type="submit">Simpan</button>
+                </p>
+            </form>
         </div>
     </div>
 </body>
-
 </html>
