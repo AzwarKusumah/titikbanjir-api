@@ -183,11 +183,11 @@
                 </div>
 
                 <div id="New3Tab1" class="new3-tabcontent">
-                    <script src="https://gist.github.com/AzwarKusumah/ad3cdaf284f9122a3018c09b379f91b7.js"></script>
+                    <script src="https://gist.github.com/AzwarKusumah/eba441498b6748080fcb1951f9115647.js"></script>
                 </div>
 
                 <div id="New3Tab2" class="new3-tabcontent">
-                    <script src="https://gist.github.com/AzwarKusumah/909292224b8bea44249bf5ff85523c2f.js"></script>
+                    <script src="https://gist.github.com/AzwarKusumah/72191594ab1466cb82ca92d7ff695aeb.js"></script>
                 </div>
         </div>
         
