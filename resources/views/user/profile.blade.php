@@ -3,6 +3,7 @@
 
 <head>
     <title>Halaman Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
@@ -214,6 +215,7 @@
             content.classList.toggle('hide');
             profileCard.classList.toggle('hide');
         }
+        
         function showToken() {
                 var tokenContainer = document.querySelector('.token-container');
                 tokenContainer.style.display = 'block';
@@ -234,6 +236,8 @@
                     copySuccess.textContent = '';
                 }, 2000);
             }
+            
+        
     </script>
 </head>
 
@@ -272,8 +276,18 @@
         </div>
         <div class="token-container">
             <div class="copy-container">
-                <textarea id="token-textarea" readonly>{{ session('token') }}</textarea>
+            <textarea id="token-textarea" readonly>{{ $token }}</textarea>
                 <button class="copy-button" onclick="copyToken()">Copy</button>
+            </div>
+            <div class="api-key-buttons">
+                <form action="{{ route('profile.generateApiKey') }}" method="POST" style="display: inline-block;margin-top:20px;">
+                    @csrf
+                    <button type="submit">Generate API Key</button>
+                </form>
+                <form action="{{ route('profile.regenerateApiKey') }}" method="POST" style="display: inline-block; margin-top:20px;">
+                    @csrf
+                    <button type="submit">Regenerate API Key</button>
+                </form>
             </div>
             <span class="copy-success" id="copy-success"></span>
         </div>

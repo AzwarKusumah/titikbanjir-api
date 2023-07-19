@@ -11,7 +11,7 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    
+
     public function showLoginForm()
     {
         return view('login');
@@ -38,7 +38,7 @@ class LoginController extends Controller
             'email' => ['The provided credentials are incorrect.'],
         ]);
     }
-    
+
     public function logout(Request $request)
     {
         if ($request->user()) {
@@ -48,7 +48,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         $request->session()->forget('token');
-    
+
         return redirect('/login');
     }
 

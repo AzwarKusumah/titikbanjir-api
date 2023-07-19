@@ -1,0 +1,347 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background: linear-gradient(45deg, #ff8c00, #ff4500);
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.navbar .user-dropdown {
+    position: relative;
+}
+
+.navbar .user-dropdown button {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    outline: none;
+}
+
+.navbar .user-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    padding: 20px 10px 20px 10px;
+    background-color: #f9f9f9;
+    min-width: 150px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.navbar .user-dropdown:hover .user-dropdown-content {
+    display: block;
+}
+
+.navbar .user-dropdown-content a {
+    display: block;
+    padding: 10px 20px;
+    color: #333;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+.navbar .user-dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.content {
+    margin: 20px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+@media (min-width: 576px) {
+    .container {
+        width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}
+
+.content h2 {
+    font-size: 24px;
+}
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    border-top: none;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.subtab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.subtab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.subtab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.subtab button.active {
+    background-color: #ccc;
+}
+
+.subtabcontent {
+    display: none;
+    border-top: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.new-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Style the buttons inside the tab */
+.new-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.new-tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.new-tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.new-tabcontent {
+    display: none;
+    border-top: none;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.new2-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Style the buttons inside the tab */
+.new2-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.new2-tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.new2-tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.new2-tabcontent {
+    display: none;
+    border-top: none;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.new3-tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Style the buttons inside the tab */
+.new3-tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.new3-tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.new3-tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.new3-tabcontent {
+    display: none;
+    border-top: none;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.subtab2 {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.subtab2 button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.subtab2 button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.subtab2 button.active {
+    background-color: #ccc;
+}
+
+.subtabcontent2 {
+    display: none;
+    border-top: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

@@ -18,5 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/setting', [ProfileController::class, 'showSetting'])->name('setting');
     Route::post('/update-profile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+    Route::post('/generate-api-key', [ProfileController::class, 'generateApiKey'])->name('profile.generateApiKey');
+    Route::post('/regenerate-api-key', [ProfileController::class, 'regenerateApiKey'])->name('profile.regenerateApiKey');
 
 });

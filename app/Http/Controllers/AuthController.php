@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -62,4 +63,39 @@ class AuthController extends Controller
         ]);
     }
 
+
+
+    public function generateApiKey(Request $request)
+    {
+        $user = $request->user();
+
+
+        $apiKey = Str::random(60);
+
+
+        $user->api_key = $apiKey;
+        $user->save();
+
+        return response()->json([
+            'message' => 'API key generated successfully',
+            'api_key' => $apiKey
+        ]);
+    }
+
+    public function regenerateApiKey(Request $request)
+    {
+        $user = $request->user();
+
+
+        $apiKey = Str::random(60);
+
+
+        $user->api_key = $apiKey;
+        $user->save();
+
+        return response()->json([
+            'message' => 'API key generated successfully',
+            'api_key' => $apiKey
+        ]);
+    }
 }

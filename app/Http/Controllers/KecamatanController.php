@@ -12,9 +12,7 @@ class KecamatanController extends Controller
     public function index()
     {
 
-        if (!Auth::guard('sanctum')->check()) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
+
         $kecamatanList = Kecamatan::with('Kelurahan')->get();
 
         $response = [

@@ -10,9 +10,7 @@ class KelurahanController extends Controller
 {
     public function index(Request $request)
     {
-        if (!Auth::guard('sanctum')->check()) {
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
+
         $kelurahanId = $request->query('id');
         $kelurahan = Kelurahan::with('titikBanjir', 'titikPengungsian')->find($kelurahanId);
 
