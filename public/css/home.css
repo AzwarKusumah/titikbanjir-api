@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .navbar {

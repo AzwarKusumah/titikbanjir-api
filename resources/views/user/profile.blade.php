@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         .sidebar {
@@ -245,7 +246,7 @@
     <div class="sidebar">
         <div class="brand">
             <!-- <img class="logo" src="logo.png" alt="Logo"> -->
-            <span class="brand-text">Nama Aplikasi</span>
+            <span class="brand-text">TITIK BANJIR</span>
         </div>
         <ul>
             <li><a href="/home"><i class="fas fa-home"></i><span>Home</span></a></li>

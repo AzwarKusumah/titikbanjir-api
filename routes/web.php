@@ -22,3 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/regenerate-api-key', [ProfileController::class, 'regenerateApiKey'])->name('profile.regenerateApiKey');
 
 });
+Route::get('/', function () {
+    return view('welcome');
+});
